@@ -1,0 +1,29 @@
+{
+  "Status": "1",
+  "Count": "2",
+  "Code": "10000",
+  "Information": [
+    {
+      "code": "200000",
+      "date": "2024-02-19",
+      "whos": [
+        {
+          "name1": "Jim",
+          "name2": "Bob"
+        },
+        {
+          "name1": "Mary",
+          "name2": "Jane"
+        },
+        {
+          "name1": "Mary Anne",
+          "name2": "Kent"
+        },
+        {
+          "name1": "Adam",
+          "name2": "Ben"
+        }
+      ]
+    }
+  ]
+}

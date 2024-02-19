@@ -1,0 +1,41 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<script src="lib/highlight.js/highlight.min.js"></script>
+
+<input id="dottedValue" type="hidden" asp-for="PersonWithDotsList" />
+<input id="stringAsIntValue" type="hidden" asp-for="ProductsStringAsInt" />
+
+<div class="container">
+
+    <div class="row mx-auto">
+        <div class="col-6 p-0 text-center fw-bold">
+            Example for properties with dots
+        </div>
+        <div class="col-6 p-0 text-center fw-bold">
+            Example reading string as int
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6 p-2 bg-light border border-dark">
+            <pre><code class="language-json"><div id="dotted"></div></code></pre>
+        </div>
+        <div class="col-6 p-2 bg-light border border-dark">
+            <pre><code class="language-json"><div id="casingValue"></div></code></pre>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts
+{
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementsByTagName('pre')[0].innerHTML = document.getElementById('dottedValue').value;
+            document.getElementsByTagName('pre')[1].innerHTML = document.getElementById('stringAsIntValue').value;
+        });
+    </script>
+}

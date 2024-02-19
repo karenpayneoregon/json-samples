@@ -1,0 +1,20 @@
+[
+  {
+    "BirthDate": "1978-03-04",
+    "Id": 1,
+    "FirstName": "Mary",
+    "LastName": "Jones"
+  },
+  {
+    "BirthDate": "1982-05-14",
+    "Id": 2,
+    "FirstName": "John",
+    "LastName": "Burger"
+  },
+  {
+    "BirthDate": "1968-06-09",
+    "Id": 3,
+    "FirstName": "Anne",
+    "LastName": "Adams"
+  }
+]
