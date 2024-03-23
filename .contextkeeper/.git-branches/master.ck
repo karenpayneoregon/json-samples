@@ -6,18 +6,18 @@
       "WindowType": "MainWindow",
       "WindowState": "Maximized",
       "Window": {
-        "Left": 0,
-        "Top": 0,
-        "Width": 2048,
-        "Height": 1121
+        "Left": -1920,
+        "Top": -87,
+        "Width": 1921,
+        "Height": 1081
       },
       "Docks": [
         {
           "Documents": [
             {
-              "FilePath": "C:\\OED\\DotnetLand\\VS2022\\SystemTextJsonSamples\\WithAdditionModifierApp\\Classes\\Product.cs",
-              "RelativePath": "..\\..\\WithAdditionModifierApp\\Classes\\Product.cs",
-              "FullName": "Product.cs",
+              "FilePath": "C:\\OED\\DotnetLand\\VS2022\\SystemTextJsonSamples\\GenerateJsonApp\\Form1.cs",
+              "RelativePath": "..\\..\\GenerateJsonApp\\Form1.cs",
+              "FullName": "Form1.cs",
               "DockedHeight": {
                 "UnitType": "Stretch",
                 "Value": 162
@@ -26,59 +26,27 @@
                 "UnitType": "Stretch",
                 "Value": 200
               },
-              "Line": 9,
-              "Column": 17,
+              "Line": 17,
+              "Column": 25,
+              "IsPinned": false
+            },
+            {
+              "FilePath": "C:\\OED\\DotnetLand\\VS2022\\SystemTextJsonSamples\\PerfectWorld1\\Program.cs",
+              "RelativePath": "..\\..\\PerfectWorld1\\Program.cs",
+              "FullName": "Program.cs",
+              "DockedHeight": {
+                "UnitType": "Stretch",
+                "Value": 162
+              },
+              "DockedWidth": {
+                "UnitType": "Stretch",
+                "Value": 200
+              },
+              "Line": 14,
+              "Column": 48,
               "IsPinned": false,
               "IsActive": true,
               "IsSelected": true
-            },
-            {
-              "FilePath": "C:\\OED\\DotnetLand\\VS2022\\SystemTextJsonSamples\\WithAdditionModifierApp\\Classes\\SerializationCountExample.cs",
-              "RelativePath": "..\\..\\WithAdditionModifierApp\\Classes\\SerializationCountExample.cs",
-              "FullName": "SerializationCountExample.cs",
-              "DockedHeight": {
-                "UnitType": "Stretch",
-                "Value": 162
-              },
-              "DockedWidth": {
-                "UnitType": "Stretch",
-                "Value": 200
-              },
-              "Line": 39,
-              "Column": 1,
-              "IsPinned": false
-            },
-            {
-              "FilePath": "C:\\OED\\DotnetLand\\VS2022\\SystemTextJsonSamples\\WithAdditionModifierApp\\Classes\\Program.cs",
-              "RelativePath": "..\\..\\WithAdditionModifierApp\\Classes\\Program.cs",
-              "FullName": "Program.cs",
-              "DockedHeight": {
-                "UnitType": "Stretch",
-                "Value": 162
-              },
-              "DockedWidth": {
-                "UnitType": "Stretch",
-                "Value": 200
-              },
-              "Line": 27,
-              "Column": 2,
-              "IsPinned": false
-            },
-            {
-              "FilePath": "C:\\OED\\DotnetLand\\VS2022\\SystemTextJsonSamples\\WithAdditionModifierApp\\Program.cs",
-              "RelativePath": "..\\..\\WithAdditionModifierApp\\Program.cs",
-              "FullName": "Program.cs",
-              "DockedHeight": {
-                "UnitType": "Stretch",
-                "Value": 162
-              },
-              "DockedWidth": {
-                "UnitType": "Stretch",
-                "Value": 200
-              },
-              "Line": 13,
-              "Column": 38,
-              "IsPinned": false
             }
           ],
           "DockedHeight": {
