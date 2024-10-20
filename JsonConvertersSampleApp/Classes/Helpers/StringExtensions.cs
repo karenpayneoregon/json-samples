@@ -44,8 +44,18 @@ public static partial class StringExtensions
 
     }
 
+    /// <summary>
+    /// Masks a credit card number by replacing all but the last four digits with a specified mask character.
+    /// </summary>
+    /// <param name="sender">The credit card number to be masked.</param>
+    /// <param name="maskCharacter">The character to use for masking the credit card number. Default is 'X'.</param>
+    /// <returns>A masked version of the credit card number, with all but the last four digits replaced by the mask character.</returns>
+    /// <remarks>
+    /// The method uses a regular expression to identify and mask the credit card number.
+    /// </remarks>
     public static string MaskCreditCardNumber(this string sender, char maskCharacter = 'X')
     {
+
         if (string.IsNullOrEmpty(sender))
         {
             return sender;
@@ -53,13 +63,14 @@ public static partial class StringExtensions
 
         return CreditCardMaskRegEx().Replace(sender, match =>
         {
-            string digits = string.Concat(match.Value.Where(char.IsDigit));
+            var digits = string.Concat(match.Value.Where(char.IsDigit));
 
             return digits.Length is 16 or 15
                 ? new string(maskCharacter, digits.Length - 4) + digits[^4..]
                 : match.Value;
         });
     }
+
 
     [GeneratedRegex("[0-9][0-9 ]{13,}[0-9]")]
     private static partial Regex CreditCardMaskRegEx();

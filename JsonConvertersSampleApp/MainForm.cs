@@ -20,9 +20,9 @@ public partial class MainForm : Form
         var json = JsonSerializer.Serialize(_taxpayersBindingList, Options);
         textBox1.Text = json;
 
-        List<Taxpayer> person = JsonSerializer.Deserialize<List<Taxpayer>>(json);
+        List<Taxpayer> taxpayers = JsonSerializer.Deserialize<List<Taxpayer>>(json);
 
-
+        CreditCardExample.Run();
     }
 
     private static JsonSerializerOptions Options =>
