@@ -46,10 +46,11 @@ internal partial class Program
         //Json.ReadPeopleIgnoreBirthDate();
 
         //AnsiConsole.MarkupLine("[red]Intentional failure to read last name property for people[/]");
-        //Json.ReadPeopleWithSpacesInPropertiesOoops();
+        Json.ReadPeopleWithSpacesInPropertiesOoops();
 
         //AnsiConsole.MarkupLine("[yellow]Case insensitive properties[/]");
         //Json.ReadPeopleCaseInsensitiveProperties();
+        //Json.ReadPeopleCaseInsensitiveProperties1();
 
         //AnsiConsole.MarkupLine("[yellow]Correctly reads with[/] [white on blue].[/] [yellow]in property name[/]");
         //Json.ReadPeopleWithDotsInProperties();
@@ -67,11 +68,11 @@ internal partial class Program
         //Console.WriteLine();
 
         //AnsiConsole.MarkupLine("[yellow]Handling overflows[/]");
-        //Json.HandleOverflows();
+        Json.HandleOverflows();
 
 
-        DapperOperations operations = new DapperOperations();
-        operations.GetDictionary();
+        //DapperOperations operations = new DapperOperations();
+        //operations.GetDictionary();
 
         Console.WriteLine();
         Console.ReadLine();

@@ -234,6 +234,31 @@ internal class Json
         }
     }
 
+    public static void ReadPeopleCaseInsensitiveProperties1()
+    {
+        List<PersonCasing>? people = JsonSerializer.Deserialize<List<PersonCasing>>(
+            """
+            [
+              {
+                "id": 1,
+                "firstname": "Mary",
+                "lastname": "Jones"
+              },
+              {
+                "id": 2,
+                "firstname": "John",
+                "lastname": "Burger"
+              }
+            ]
+            """,
+            JsonHelpers.WebOptions);
+
+        foreach (var person in people)
+        {
+            Console.WriteLine(person);
+        }
+    }
+
     /// <summary>
     /// Microsoft's docs
     /// How to handle overflow JSON
@@ -314,12 +339,8 @@ internal class Json
     /// </summary>
     public static void ReadStringPropertyAsInt()
     {
-        var jsonOptions = new JsonSerializerOptions()
-        {
-            NumberHandling = JsonNumberHandling.AllowReadingFromString
-        };
 
-        List<Product>? products = JsonSerializer.Deserialize<List<Product>>(
+        var products = JsonSerializer.Deserialize<List<Product>>(
             """
             [
               {
@@ -335,8 +356,8 @@ internal class Json
                 "Name": "iPhone ear buds"
               }
             ]
-            """, 
-            jsonOptions);
+            """,
+            IntFromStringOptions);
 
         foreach (var product in products)
         {
@@ -344,6 +365,9 @@ internal class Json
         }
 
     }
+
+    private static JsonSerializerOptions IntFromStringOptions 
+        => new() { NumberHandling = JsonNumberHandling.AllowReadingFromString };
 
     public static void IgnoreNullValues()
     {

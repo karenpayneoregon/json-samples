@@ -8,7 +8,7 @@ internal partial class Program
     public static void Init()
     {
         AnsiConsole.MarkupLine("");
-        Console.Title = "Code sample";
+        Console.Title = "Json code samples";
         WindowUtility.SetConsoleWindowPosition(WindowUtility.AnchorWindow.Center);
     }
 }

@@ -4,7 +4,7 @@ namespace ModelsLibrary.Models;
 
 public class Product
 {
-    [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+    //[JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
     [JsonPropertyOrder(order: 2)]
     public int Id { get; set; }
     [JsonPropertyOrder(order: 1)]
