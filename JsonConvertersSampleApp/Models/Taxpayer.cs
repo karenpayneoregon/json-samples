@@ -1,8 +1,7 @@
 ﻿using System.Text.Json.Serialization;
-using JsonConvertersSampleApp.Classes;
-using JsonConvertersSampleApp.Classes.Converters;
-using JsonConvertersSampleApp.Classes.Helpers;
 using JsonConvertersSampleApp.Interfaces;
+using JsonConvertersSampleLibrary.Converters;
+using JsonConvertersSampleLibrary.Extensions;
 
 namespace JsonConvertersSampleApp.Models;
 

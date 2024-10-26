@@ -1,8 +1,8 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
-using JsonConvertersSampleApp.Classes.Helpers;
+using JsonConvertersSampleLibrary.Extensions;
 
-namespace JsonConvertersSampleApp.Classes.Converters;
+namespace JsonConvertersSampleLibrary.Converters;
 
 /// <summary>
 /// Provides functionality to mask credit card numbers when serializing to JSON.

@@ -21,6 +21,10 @@
 		<PackageReference Include="ConsoleConfigurationLibrary" Version="1.0.0.2" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\JsonConvertersSampleLibrary\JsonConvertersSampleLibrary.csproj" />
+	</ItemGroup>
+
 	<!--<ItemGroup>
 		<PackageReference Include="Dapper" Version="2.1.35" />
 		<PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.1" />

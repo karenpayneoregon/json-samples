@@ -1,6 +1,8 @@
-﻿using System.Text.Json;
-using JsonConvertersSampleApp.Classes.Converters;
+﻿using System.Diagnostics;
+using System.Text.Json;
 using JsonConvertersSampleApp.Models;
+using JsonConvertersSampleLibrary.Classes;
+using JsonConvertersSampleLibrary.Extensions;
 
 namespace JsonConvertersSampleApp.Classes;
 
@@ -14,7 +16,7 @@ internal class CreditCardExample
     /// This method creates two sample <see cref="Customer"/> objects, serializes them to JSON format,
     /// and writes the JSON string to a file named "Customers.json".
     /// </remarks>
-    public static void Run()
+    public static void ForCustomers()
     {
         var customer1 = new Customer
         {
@@ -43,6 +45,13 @@ internal class CreditCardExample
 
         File.WriteAllText("Customers.json", json);
 
+    }
+
+    public static void FromExternal()
+    {
+        CreditCard cc = new CreditCard();
+        string text = "6011-1111-1111-1117";
+        Debug.WriteLine(text.CreditCardShowLastFourDigits());
     }
 
     private static JsonSerializerOptions Options =>

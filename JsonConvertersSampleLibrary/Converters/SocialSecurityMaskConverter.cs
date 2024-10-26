@@ -1,8 +1,8 @@
-﻿using JsonConvertersSampleApp.Classes.Helpers;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text.Json.Serialization;
+using JsonConvertersSampleLibrary.Extensions;
 
-namespace JsonConvertersSampleApp.Classes.Converters;
+namespace JsonConvertersSampleLibrary.Converters;
 /// <summary>
 /// Provides a custom JSON converter for Social Security Numbers (SSNs) that masks the SSN value during serialization.
 /// </summary>
@@ -15,10 +15,8 @@ public class SocialSecurityMaskConverter : JsonConverter<string>
     /// <param name="typeToConvert">The type of the object to convert.</param>
     /// <param name="options">Options to control the behavior during reading.</param>
     /// <returns>The string value read from the JSON.</returns>
-    public override string Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-    {
-        return reader.GetString()!;
-    }
+    public override string Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) 
+        => reader.GetString()!;
 
     /// <summary>
     /// Writes a masked Social Security Number (SSN) to the JSON.

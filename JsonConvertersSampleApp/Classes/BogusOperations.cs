@@ -32,7 +32,8 @@ internal class BogusOperations
         var faker = new Faker<Taxpayer>()
             .RuleFor(t => t.Id, f => id++)
             .RuleFor(u => u.Gender, f => f.PickRandom<Gender>())
-            .RuleFor(c => c.FirstName, (f, u) => f.Name.FirstName((Name.Gender?)u.Gender))
+            .RuleFor(c => c.FirstName, (f, u) => 
+                f.Name.FirstName((Name.Gender?)u.Gender))
             .RuleFor(t => t.LastName, f => f.Name.LastName())
             .RuleFor(t => t.Title, f => f.Name.JobTitle())
             .RuleFor(t => t.SSN, f => f.Person.Ssn())

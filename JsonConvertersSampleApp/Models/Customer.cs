@@ -1,5 +1,5 @@
 ﻿using System.Text.Json.Serialization;
-using JsonConvertersSampleApp.Classes.Converters;
+using JsonConvertersSampleLibrary.Converters;
 
 namespace JsonConvertersSampleApp.Models;
 

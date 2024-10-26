@@ -1,4 +1,4 @@
-﻿namespace JsonConvertersSampleApp.Classes.Helpers;
+﻿namespace JsonConvertersSampleLibrary.Extensions;
 public static class NumericExtensions
 {
     /// <summary>
