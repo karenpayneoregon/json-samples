@@ -41,7 +41,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "October 2024", "October 202
 		october2024.md = october2024.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonConvertersSampleLibrary", "JsonConvertersSampleLibrary\JsonConvertersSampleLibrary.csproj", "{10C80A4E-3C96-4C22-9926-42486B7B78AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsonConvertersSampleLibrary", "JsonConvertersSampleLibrary\JsonConvertersSampleLibrary.csproj", "{10C80A4E-3C96-4C22-9926-42486B7B78AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiacriticsConverterApp", "DiacriticsConverterApp\DiacriticsConverterApp.csproj", "{E7627AE6-22FA-4599-99FE-36442995F3DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -101,6 +103,10 @@ Global
 		{10C80A4E-3C96-4C22-9926-42486B7B78AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10C80A4E-3C96-4C22-9926-42486B7B78AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10C80A4E-3C96-4C22-9926-42486B7B78AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7627AE6-22FA-4599-99FE-36442995F3DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7627AE6-22FA-4599-99FE-36442995F3DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7627AE6-22FA-4599-99FE-36442995F3DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7627AE6-22FA-4599-99FE-36442995F3DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -112,6 +118,7 @@ Global
 		{4C87B8CE-999C-41CF-860B-B026F39A7EE5} = {9AA2EC9F-E71B-4A26-9C6C-9402DC6DD0C0}
 		{C2020D87-130B-4A39-A588-0BDF608915E9} = {8491B974-538B-47A6-B473-5AAE0F31BD7B}
 		{10C80A4E-3C96-4C22-9926-42486B7B78AD} = {8491B974-538B-47A6-B473-5AAE0F31BD7B}
+		{E7627AE6-22FA-4599-99FE-36442995F3DA} = {8491B974-538B-47A6-B473-5AAE0F31BD7B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {342D7FE6-4218-4C64-8396-D903B378D9DB}
