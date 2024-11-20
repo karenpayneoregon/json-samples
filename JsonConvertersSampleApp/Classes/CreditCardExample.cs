@@ -2,6 +2,7 @@
 using System.Text.Json;
 using JsonConvertersSampleApp.Models;
 using JsonConvertersSampleLibrary.Classes;
+using JsonConvertersSampleLibrary.Converters;
 using JsonConvertersSampleLibrary.Extensions;
 
 namespace JsonConvertersSampleApp.Classes;
