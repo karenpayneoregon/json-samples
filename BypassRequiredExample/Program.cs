@@ -52,8 +52,10 @@ internal partial class Program
 
                         foreach (JsonPropertyInfo propertyInfo in typeInfo.Properties)
                         {
-                            // Strip IsRequired constraint from every property.
-                            propertyInfo.IsRequired = false;
+                            if (propertyInfo.Name == nameof(Person.BirthDate))
+                            {
+                                propertyInfo.IsRequired = false;
+                            }
                         }
                     }
                 }
