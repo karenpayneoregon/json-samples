@@ -6,7 +6,7 @@ namespace ReadOddJsonApp.Classes;
 
 internal class FixedDecimalCode
 {
-    private static JsonSerializerOptions options = new()
+    private static JsonSerializerOptions _options = new()
     {
         WriteIndented = true,
         Converters = { new FixedDecimalJsonConverter() }
@@ -16,8 +16,8 @@ internal class FixedDecimalCode
     {
         List<Products> list =
         [
-            new Products() { Id = 1, Name = "Phone", UnitPrice = 1200.99m },
-            new Products() { Id = 2, Name = "Case", UnitPrice = 20.45m }
+            new() { Id = 1, Name = "Phone", UnitPrice = 1200.99m },
+            new() { Id = 2, Name = "Case", UnitPrice = 20.45m }
         ];
 
         var json = JsonSerializer.Serialize(list);

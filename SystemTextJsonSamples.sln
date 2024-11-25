@@ -47,6 +47,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiacriticsConverterApp", "D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BypassRequiredExample", "BypassRequiredExample\BypassRequiredExample.csproj", "{94B36CCF-5652-48C5-899D-38932AA29567}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DateTimeConverterApp", "DateTimeConverterApp\DateTimeConverterApp.csproj", "{D01A6CF7-A243-469B-B97B-FFDC396C3861}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -113,6 +115,10 @@ Global
 		{94B36CCF-5652-48C5-899D-38932AA29567}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94B36CCF-5652-48C5-899D-38932AA29567}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94B36CCF-5652-48C5-899D-38932AA29567}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D01A6CF7-A243-469B-B97B-FFDC396C3861}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D01A6CF7-A243-469B-B97B-FFDC396C3861}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D01A6CF7-A243-469B-B97B-FFDC396C3861}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D01A6CF7-A243-469B-B97B-FFDC396C3861}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

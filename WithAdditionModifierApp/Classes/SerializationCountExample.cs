@@ -1,8 +1,8 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization.Metadata;
-using WithAdditionModifierApp.Classes;
+using WithAdditionModifierApp.Models;
 
-namespace WithAdditionModifierApp.Models;
+namespace WithAdditionModifierApp.Classes;
 
 public class SerializationCountExample
 {
@@ -20,45 +20,32 @@ public class SerializationCountExample
 
             object[] serializationCountAttributes =
                 propertyInfo.AttributeProvider?.GetCustomAttributes(typeof(SerializationCountAttribute), true) ??
-                Array.Empty<object>();
+                [];
 
             SerializationCountAttribute attribute = serializationCountAttributes.Length == 1
                 ? (SerializationCountAttribute)serializationCountAttributes[0]
                 : null;
 
-            if (attribute != null)
+            if (attribute == null) continue;
+            Action<object, object> setProperty = propertyInfo.Set;
+            if (setProperty is not null)
             {
-                Action<object, object> setProperty = propertyInfo.Set;
-                if (setProperty is not null)
+                propertyInfo.Set = (obj, value) =>
                 {
-                    propertyInfo.Set = (obj, value) =>
+                    if (propertyInfo.Name == "Count")
                     {
-                        if (propertyInfo.Name == "Count")
-                        {
-                            value = (int?)value + 10;
+                        value = (int?)value + 10;
+                    }
+                    else
+                    {
+                        value = (int?)value + 1;
+                    }
 
-                            setProperty(obj, value);
-                        }
-                        else
-                        {
-                            value = (int?)value + 1;
-
-                            setProperty(obj, value);
-                        }
-
-                    };
-                }
+                    setProperty(obj, value);
+                };
             }
         }
     }
-    
-    private static JsonSerializerOptions _options = new()
-    {
-        TypeInfoResolver = new DefaultJsonTypeInfoResolver
-        {
-            Modifiers = { IncrementCounterModifier }
-        }
-    };
 
     public static void Run()
     {
@@ -87,4 +74,12 @@ public class SerializationCountExample
                                $"[cyan]{deserialized.RoundTrips,-3}[/] [yellow]Count:[/] [cyan]{deserialized.Count}[/]");
 
     }
+
+    private static JsonSerializerOptions _options = new()
+    {
+        TypeInfoResolver = new DefaultJsonTypeInfoResolver
+        {
+            Modifiers = { IncrementCounterModifier }
+        }
+    };
 }
