@@ -67,4 +67,34 @@ public class Samples
 
         Console.WriteLine();
     }
+
+    /// <summary>
+    /// Reads the content of a GitHub Gist from a specified URL and writes it to a local file.
+    /// With no cache control, the URL is appended with a timestamp to bypass cache.
+    /// </summary>
+    /// <remarks>
+    /// If the request is successful, the content of the Gist is saved to a file named "gist.txt".
+    /// If an exception occurs during the process, the exception message is written to the same file.
+    /// </remarks>
+    public static async Task ReadGist(string gistUrl)
+    {
+
+        try
+        {
+            using HttpClient client = new();
+            
+            client.DefaultRequestHeaders.Add("Cache-Control", "no-cache");
+            client.DefaultRequestHeaders.Add("Pragma", "no-cache");
+
+            var urlWithTimestamp = $"{gistUrl}?_={DateTimeOffset.UtcNow.ToUnixTimeMilliseconds()}";
+
+            var content = await client.GetStringAsync(urlWithTimestamp);
+
+            await File.WriteAllTextAsync("gist.txt",content);
+        }
+        catch (Exception ex)
+        {
+            await File.WriteAllTextAsync("gist.txt", ex.Message);
+        }
+    }
 }

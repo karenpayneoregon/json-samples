@@ -59,7 +59,7 @@ public  class CreditCard
                 int digitCount = 0; // digitCount allows us to leave some digits exposed at end of credit card
                 while (index >= c.Index) // loop for length of credit card
                 {
-                    digitCount += Char.IsDigit(newValue[index]) ? 1 : 0; // There might be spaces or dashes so only count digits
+                    digitCount += char.IsDigit(newValue[index]) ? 1 : 0; // There might be spaces or dashes so only count digits
                     if (digitCount > exceptLast) // Only if we've already left the number of digits exposed that have been requested then start blatting the numbers.
                     {
                         newValue[index] = replaceChar;
