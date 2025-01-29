@@ -25,6 +25,7 @@ internal partial class Program
             {
                 var name = student.GetProperty("Name").GetString();
 
+                // hover over TryGetProperty for community samples
                 if (student.TryGetProperty("Grade", out JsonElement gradeElement))
                 {
                     AnsiConsole.MarkupLine($"[cyan]{name,-20} has a grade[/]");
