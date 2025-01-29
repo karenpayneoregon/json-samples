@@ -4,6 +4,10 @@ namespace TryGetPropertySample;
 
 internal partial class Program
 {
+    /// <summary>
+    /// Processes a JSON string containing student data, calculates the average grade,
+    /// and displays the results.
+    /// </summary>
     static void Main(string[] args)
     {
         var jsonString = MockedData();
