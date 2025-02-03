@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using ConsoleConfigurationLibrary.Classes;
+using Microsoft.Extensions.Configuration;
 using System.Text.Json;
 using TryGetPropertySample.Models;
 using static TryGetPropertySample.Classes.SpectreConsoleHelpers;
@@ -121,29 +122,34 @@ internal class AppSettingsSamples
     }
 
     /// <summary>
-    /// Retrieves the default logging level from the "Logging" section of a JSON configuration file.
+    /// Retrieves and displays the default logging level from the application's configuration.
     /// </summary>
     /// <remarks>
-    /// This method parses a mocked JSON configuration, navigates to the "Logging" section, 
-    /// and extracts the value of the "Default" property within the "LogLevel" subsection.
+    /// This method reads the application's configuration file (e.g., appsettings.json),
+    /// specifically the "Logging" section, and extracts the "Default" property within the
+    /// "LogLevel" subsection. The retrieved value is then displayed in the console.
     /// </remarks>
-    /// <returns>
-    /// A string representing the default logging level, such as "Information".
-    /// </returns>
+    /// <example>
+    /// Example output:
+    /// <code>
+    /// Default: Information
+    /// </code>
+    /// </example>
+    /// <seealso cref="JsonHelpers.ConfigurationBuilder"/>
+    /// <seealso cref="SpectreConsoleHelpers.PrintCyan(string?)"/>
+    /// <seealso cref="AnsiConsole.MarkupLine(string)"/>
     public static void GetLoggingSettings()
     {
         
         PrintCyan();
+        
+        var configuration = JsonHelpers.ConfigurationBuilder();
 
-        var value = JsonDocument.Parse(MockedConfiguration())
-                                .RootElement
-                                .GetProperty(nameof(Logging))
-                                .GetProperty(nameof(LogLevel))
-                                .GetProperty(nameof(LogLevel.Default))
-                                .GetString();
+        var value = configuration.GetValue<string>(
+            $"{nameof(Logging)}:{nameof(LogLevel)}:{nameof(LogLevel.Default)}");
 
         AnsiConsole.MarkupLine($"[green]   Default:[/][white] {value}[/]");
-
+        
         Console.WriteLine();
 
     }

@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using Microsoft.Extensions.Configuration;
+using System.Text.Json;
 
 namespace TryGetPropertySample.Classes;
 /// <summary>
@@ -76,5 +77,14 @@ public class JsonHelpers
         using JsonDocument doc = JsonDocument.Parse(jsonContent);
         return doc.RootElement.TryGetProperty("ConnectionStrings", out JsonElement connectionStrings) && 
                connectionStrings.TryGetProperty("MainConnection", out _);
+    }
+
+    public static IConfiguration ConfigurationBuilder()
+    {
+        IConfiguration configuration = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            .Build();
+        return configuration;
     }
 }
