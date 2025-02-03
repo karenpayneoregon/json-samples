@@ -22,7 +22,7 @@ internal class AppSettingsSamples
         PrintCyan();
 
         using JsonDocument doc = JsonDocument.Parse(MockedConfiguration());
-        var result = doc.RootElement.TryGetProperty(nameof(ConnectionStrings), out JsonElement connectionStrings) &&
+        var result = doc.RootElement.TryGetProperty(nameof(ConnectionStrings), out var connectionStrings) &&
                      connectionStrings.TryGetProperty(nameof(ConnectionStrings.MainConnection), out _);
 
         if (result)
@@ -53,7 +53,7 @@ internal class AppSettingsSamples
         PrintCyan();
 
         using JsonDocument doc = JsonDocument.Parse(MockedConfiguration());
-        var result = doc.RootElement.TryGetProperty("ConnectionStrings", out JsonElement connectionStrings) &&
+        var result = doc.RootElement.TryGetProperty("ConnectionStrings", out var connectionStrings) &&
                      connectionStrings.TryGetProperty("MainConnection", out _);
 
         if (result)
@@ -84,7 +84,7 @@ internal class AppSettingsSamples
         PrintCyan();
 
         using JsonDocument doc = JsonDocument.Parse(MockedConfiguration());
-        var result = doc.RootElement.TryGetProperty("ConnectionString", out JsonElement connectionStrings) &&
+        var result = doc.RootElement.TryGetProperty("ConnectionString", out var connectionStrings) &&
                      connectionStrings.TryGetProperty("MainConnection", out _);
 
         if (result)
@@ -106,9 +106,9 @@ internal class AppSettingsSamples
         PrintCyan();
 
         using JsonDocument doc = JsonDocument.Parse(MockedConfiguration());
-        if (doc.RootElement.TryGetProperty("Logging", out JsonElement loggingElement) &&
-            loggingElement.TryGetProperty("LogLevel", out JsonElement logLevelElement) &&
-            logLevelElement.TryGetProperty("Default", out JsonElement defaultLogLevel))
+        if (doc.RootElement.TryGetProperty("Logging", out var loggingElement) &&
+            loggingElement.TryGetProperty("LogLevel", out var logLevelElement) &&
+            logLevelElement.TryGetProperty("Default", out var defaultLogLevel))
         {
             AnsiConsole.MarkupLine($"   [green]LogLevel Default exists:[/] [white]{defaultLogLevel.GetString()}[/]");
         }
@@ -125,9 +125,9 @@ internal class AppSettingsSamples
     /// Retrieves and displays the default logging level from the application's configuration.
     /// </summary>
     /// <remarks>
-    /// This method reads the application's configuration file (e.g., appsettings.json),
-    /// specifically the "Logging" section, and extracts the "Default" property within the
-    /// "LogLevel" subsection. The retrieved value is then displayed in the console.
+    /// This method accesses the application's configuration file (e.g., appsettings.json),
+    /// specifically the "Logging" section, and retrieves the "Default" property within the
+    /// "LogLevel" subsection. The retrieved value is displayed in the console.
     /// </remarks>
     /// <example>
     /// Example output:
@@ -135,17 +135,19 @@ internal class AppSettingsSamples
     /// Default: Information
     /// </code>
     /// </example>
-    /// <seealso cref="JsonHelpers.ConfigurationBuilder"/>
+    /// <seealso cref="Config.Configuration.JsonRoot()"/>
     /// <seealso cref="SpectreConsoleHelpers.PrintCyan(string?)"/>
     /// <seealso cref="AnsiConsole.MarkupLine(string)"/>
     public static void GetLoggingSettings()
     {
         
         PrintCyan();
-        
-        var configuration = JsonHelpers.ConfigurationBuilder();
 
-        var value = configuration.GetValue<string>(
+        // alternate to JsonRoot
+        //var configuration = JsonHelpers.ConfigurationBuilder();
+
+        // See project file for an alias on ConsoleConfigurationLibrary package
+        var value = Configuration.JsonRoot().GetValue<string>(
             $"{nameof(Logging)}:{nameof(LogLevel)}:{nameof(LogLevel.Default)}");
 
         AnsiConsole.MarkupLine($"[green]   Default:[/][white] {value}[/]");

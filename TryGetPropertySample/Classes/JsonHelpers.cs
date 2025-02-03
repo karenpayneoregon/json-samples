@@ -79,6 +79,27 @@ public class JsonHelpers
                connectionStrings.TryGetProperty("MainConnection", out _);
     }
 
+    /// <summary>
+    /// Builds and returns an <see cref="IConfiguration"/> object by reading the "appsettings.json" file.
+    /// </summary>
+    /// <remarks>
+    /// This method initializes a configuration builder, sets the base path to the current directory,
+    /// and loads the "appsettings.json" file. The configuration is built with support for optional
+    /// file loading and automatic reloading on changes.
+    /// </remarks>
+    /// <returns>
+    /// An <see cref="IConfiguration"/> object representing the application's configuration settings.
+    /// </returns>
+    /// <example>
+    /// Example usage:
+    /// <code>
+    /// var configuration = JsonHelpers.ConfigurationBuilder();
+    /// var connectionString = configuration.GetConnectionString("DefaultConnection");
+    /// </code>
+    /// </example>
+    /// <remarks>
+    /// May want to alter to handle environments, such as Development, Staging, and Production.
+    /// </remarks>
     public static IConfiguration ConfigurationBuilder()
     {
         IConfiguration configuration = new ConfigurationBuilder()
