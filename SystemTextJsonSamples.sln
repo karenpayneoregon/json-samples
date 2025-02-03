@@ -57,7 +57,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Stackoverflow", "Stackoverf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemListJsonConverterExample", "ItemListJsonConverterExample\ItemListJsonConverterExample.csproj", "{E5E81463-559C-42A7-A3EE-9F4508BECFA7}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "X", "X", "{ED8812E4-A9C4-49E9-B564-6162A2DDA2F9}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TryGetProperty samples", "TryGetProperty samples", "{ED8812E4-A9C4-49E9-B564-6162A2DDA2F9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TryGetPropertySample", "TryGetPropertySample\TryGetPropertySample.csproj", "{50C64956-2C5B-4205-9319-7E607DCCE1CE}"
 EndProject
