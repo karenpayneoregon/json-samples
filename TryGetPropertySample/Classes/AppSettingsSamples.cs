@@ -21,7 +21,7 @@ internal class AppSettingsSamples
 
         PrintCyan();
 
-        using JsonDocument doc = JsonDocument.Parse(MockedConfiguration());
+        using var doc = JsonDocument.Parse(MockedConfiguration());
         var result = doc.RootElement.TryGetProperty(nameof(ConnectionStrings), out var connectionStrings) &&
                      connectionStrings.TryGetProperty(nameof(ConnectionStrings.MainConnection), out _);
 
@@ -52,7 +52,7 @@ internal class AppSettingsSamples
 
         PrintCyan();
 
-        using JsonDocument doc = JsonDocument.Parse(MockedConfiguration());
+        using var doc = JsonDocument.Parse(MockedConfiguration());
         var result = doc.RootElement.TryGetProperty("ConnectionStrings", out var connectionStrings) &&
                      connectionStrings.TryGetProperty("MainConnection", out _);
 
@@ -83,7 +83,7 @@ internal class AppSettingsSamples
 
         PrintCyan();
 
-        using JsonDocument doc = JsonDocument.Parse(MockedConfiguration());
+        using var doc = JsonDocument.Parse(MockedConfiguration());
         var result = doc.RootElement.TryGetProperty("ConnectionString", out var connectionStrings) &&
                      connectionStrings.TryGetProperty("MainConnection", out _);
 
@@ -105,7 +105,7 @@ internal class AppSettingsSamples
 
         PrintCyan();
 
-        using JsonDocument doc = JsonDocument.Parse(MockedConfiguration());
+        using var doc = JsonDocument.Parse(MockedConfiguration());
         if (doc.RootElement.TryGetProperty("Logging", out var loggingElement) &&
             loggingElement.TryGetProperty("LogLevel", out var logLevelElement) &&
             logLevelElement.TryGetProperty("Default", out var defaultLogLevel))
