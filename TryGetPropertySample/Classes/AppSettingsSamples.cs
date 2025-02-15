@@ -1,8 +1,13 @@
-﻿using ConsoleConfigurationLibrary.Classes;
+﻿using System.Diagnostics;
+using ConsoleConfigurationLibrary.Classes;
 using Microsoft.Extensions.Configuration;
 using System.Text.Json;
+using ConsoleConfigurationLibrary.Models;
 using TryGetPropertySample.Models;
 using static TryGetPropertySample.Classes.SpectreConsoleHelpers;
+using ConnectionStrings = TryGetPropertySample.Models.ConnectionStrings;
+using System.Xml.Linq;
+using EntityConfiguration = ConsoleConfigurationLibrary.Models.EntityConfiguration;
 
 namespace TryGetPropertySample.Classes;
 internal class AppSettingsSamples
@@ -184,4 +189,47 @@ internal class AppSettingsSamples
             """;
         return jsonString;
     }
+
+
+    public static void GetSectionDemo()
+    {
+        const string fileName = "appsettings1.json";
+        const string currentSection = nameof(EntityConfiguration);
+
+        var section = Configuration.JsonRoot(fileName).GetSection(currentSection);
+        var exists = section.Exists();
+
+        var tester = Helpers.SectionExists(currentSection);
+
+        var sectionExists = Configuration.JsonRoot(fileName).GetChildren().Any(item => item.Key == currentSection);
+
+        var createNewValue = GetConfigModel<bool>(nameof(EntityConfiguration), nameof(EntityConfiguration.CreateNew));
+    }
+
+    public static T GetConfigModel<T>(string section,string name) where T : new()
+    {
+        if (string.IsNullOrWhiteSpace(name)) return default(T);
+
+        try
+        {
+            return Configuration.JsonRoot().GetSection(section).GetValue<T>(name);
+        }
+        catch
+        {
+            return default(T); // TODO:
+        }
+    }
+
+}
+public class Configurations
+{
+    public static string GetMainConnectionString()
+    {
+        var config = new ConfigurationBuilder()
+            .SetBasePath(AppContext.BaseDirectory)
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .Build();
+        return config.GetConnectionString("MainConnection");
+    }
+
 }

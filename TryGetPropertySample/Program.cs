@@ -12,6 +12,7 @@ internal partial class Program
     /// </summary>
     static void Main(string[] args)
     {
+        AppSettingsSamples.GetSectionDemo();
 
         var json =
             /* lang=json*/

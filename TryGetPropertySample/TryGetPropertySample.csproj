@@ -26,7 +26,7 @@
 
 
 	<ItemGroup>
-		<PackageReference Include="ConsoleConfigurationLibrary" Version="1.0.0.5" />
+		<PackageReference Include="ConsoleConfigurationLibrary" Version="1.0.0.7" />
 	</ItemGroup>
 	<ItemGroup>
 		<Using Include="ConsoleConfigurationLibrary.Classes" Alias="Config" />
@@ -38,6 +38,9 @@
 
 	<ItemGroup>
 	  <None Update="appsettings.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="appsettings1.json">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
 	</ItemGroup>
