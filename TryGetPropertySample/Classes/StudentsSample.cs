@@ -1,5 +1,4 @@
 ﻿using System.Text.Json;
-using static TryGetPropertySample.Classes.SpectreConsoleHelpers;
 
 namespace TryGetPropertySample.Classes;
 

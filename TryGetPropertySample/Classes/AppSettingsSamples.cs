@@ -1,34 +1,44 @@
-﻿using System.Diagnostics;
-using ConsoleConfigurationLibrary.Classes;
+﻿using ConsoleConfigurationLibrary.Classes;
 using Microsoft.Extensions.Configuration;
 using System.Text.Json;
-using ConsoleConfigurationLibrary.Models;
 using TryGetPropertySample.Models;
-using static TryGetPropertySample.Classes.SpectreConsoleHelpers;
+
+using static ConsoleConfigurationLibrary.Classes.Configuration;
+
 using ConnectionStrings = TryGetPropertySample.Models.ConnectionStrings;
-using System.Xml.Linq;
 using EntityConfiguration = ConsoleConfigurationLibrary.Models.EntityConfiguration;
 
 namespace TryGetPropertySample.Classes;
 internal class AppSettingsSamples
 {
-    /// <summary>
-    /// Checks if the "MainConnection" property exists within the "ConnectionStrings" section
-    /// of a JSON configuration file using strongly-typed property names.
-    /// </summary>
-    /// <remarks>
-    /// This method parses a mocked JSON configuration, verifies the presence of the 
-    /// "ConnectionStrings" section and its "MainConnection" property, and outputs the result
-    /// to the console using colored messages.
-    /// </remarks>
+    public static void CheckMainSectionExistsStrongTyped1()
+    {
+        PrintCyan();
+
+        var configuration = JsonRoot();
+        var connectionStringsSection = configuration.GetSection(nameof(ConnectionStrings));
+        var result = connectionStringsSection.Exists() &&
+                     connectionStringsSection.GetValue<string>(nameof(ConnectionStrings.MainConnection)) != null;
+
+        if (result)
+        {
+            AnsiConsole.MarkupLine("[green]   Main section exists in the configuration file.[/]");
+        }
+        else
+        {
+            AnsiConsole.MarkupLine("[red]   Main section does not exists in the configuration file.[/]");
+        }
+
+        Console.WriteLine();
+    }
+
     public static void CheckMainSectionExistsStrongTyped()
     {
-
         PrintCyan();
 
-        using var doc = JsonDocument.Parse(MockedConfiguration());
-        var result = doc.RootElement.TryGetProperty(nameof(ConnectionStrings), out var connectionStrings) &&
-                     connectionStrings.TryGetProperty(nameof(ConnectionStrings.MainConnection), out _);
+        var connectionStringsSection = JsonRoot().GetSection(nameof(ConnectionStrings));
+        var result = connectionStringsSection.Exists() &&
+                     connectionStringsSection.GetValue<string>(nameof(ConnectionStrings.MainConnection)) != null;
 
         if (result)
         {
@@ -40,26 +50,16 @@ internal class AppSettingsSamples
         }
 
         Console.WriteLine();
-
     }
 
-    /// <summary>
-    /// Checks if the "MainConnection" property exists within the "ConnectionStrings" section
-    /// of a JSON configuration file using weakly-typed property names.
-    /// </summary>
-    /// <remarks>
-    /// This method parses a mocked JSON configuration, verifies the presence of the 
-    /// "ConnectionStrings" section and its "MainConnection" property using string literals, 
-    /// and outputs the result to the console with colored messages.
-    /// </remarks>
+
     public static void CheckMainSectionExistsWeakTyped()
     {
-
         PrintCyan();
 
-        using var doc = JsonDocument.Parse(MockedConfiguration());
-        var result = doc.RootElement.TryGetProperty("ConnectionStrings", out var connectionStrings) &&
-                     connectionStrings.TryGetProperty("MainConnection", out _);
+        var connectionStringsSection = JsonRoot().GetSection("ConnectionStrings");
+        var result = connectionStringsSection.Exists() &&
+                     connectionStringsSection.GetValue<string>("MainConnection") != null;
 
         if (result)
         {
@@ -71,26 +71,15 @@ internal class AppSettingsSamples
         }
 
         Console.WriteLine();
-
     }
 
-    /// <summary>
-    /// Checks if the "MainConnection" property exists within the "ConnectionStrings" section
-    /// of a JSON configuration file using weakly-typed property names with a misspelled section name.
-    /// </summary>
-    /// <remarks>
-    /// This method parses a mocked JSON configuration, attempts to verify the presence of the 
-    /// "ConnectionStrings" section (note the misspelling) and its "MainConnection" property using string literals, 
-    /// and outputs the result to the console with colored messages.
-    /// </remarks>
     public static void CheckMainSectionExistsWeakTypedMisSpelled()
     {
-
         PrintCyan();
 
-        using var doc = JsonDocument.Parse(MockedConfiguration());
-        var result = doc.RootElement.TryGetProperty("ConnectionString", out var connectionStrings) &&
-                     connectionStrings.TryGetProperty("MainConnection", out _);
+        var connectionStringsSection = JsonRoot().GetSection("ConnectionString");
+        var result = connectionStringsSection.Exists() &&
+                     connectionStringsSection.GetValue<string>("MainConnection") != null;
 
         if (result)
         {
@@ -102,20 +91,18 @@ internal class AppSettingsSamples
         }
 
         Console.WriteLine();
-
     }
 
     public static void CheckIfLogLevelExistsAndGetDefaultLevel()
     {
-
         PrintCyan();
 
-        using var doc = JsonDocument.Parse(MockedConfiguration());
-        if (doc.RootElement.TryGetProperty("Logging", out var loggingElement) &&
-            loggingElement.TryGetProperty("LogLevel", out var logLevelElement) &&
-            logLevelElement.TryGetProperty("Default", out var defaultLogLevel))
+        var logLevelSection = JsonRoot().GetSection("Logging:LogLevel");
+        var defaultLogLevel = logLevelSection.GetValue<string>("Default");
+
+        if (defaultLogLevel != null)
         {
-            AnsiConsole.MarkupLine($"   [green]LogLevel Default exists:[/] [white]{defaultLogLevel.GetString()}[/]");
+            AnsiConsole.MarkupLine($"   [green]LogLevel Default exists:[/] [white]{defaultLogLevel}[/]");
         }
         else
         {
@@ -123,103 +110,92 @@ internal class AppSettingsSamples
         }
 
         Console.WriteLine();
-
     }
 
-    /// <summary>
-    /// Retrieves and displays the default logging level from the application's configuration.
-    /// </summary>
-    /// <remarks>
-    /// This method accesses the application's configuration file (e.g., appsettings.json),
-    /// specifically the "Logging" section, and retrieves the "Default" property within the
-    /// "LogLevel" subsection. The retrieved value is displayed in the console.
-    /// </remarks>
-    /// <example>
-    /// Example output:
-    /// <code>
-    /// Default: Information
-    /// </code>
-    /// </example>
-    /// <seealso cref="Config.Configuration.JsonRoot()"/>
-    /// <seealso cref="SpectreConsoleHelpers.PrintCyan(string?)"/>
-    /// <seealso cref="AnsiConsole.MarkupLine(string)"/>
     public static void GetLoggingSettings()
     {
-        
         PrintCyan();
 
-        // alternate to JsonRoot
-        //var configuration = JsonHelpers.ConfigurationBuilder();
-
-        // See project file for an alias on ConsoleConfigurationLibrary package
-        var value = Configuration.JsonRoot().GetValue<string>(
+        var value = JsonRoot().GetValue<string>(
             $"{nameof(Logging)}:{nameof(LogLevel)}:{nameof(LogLevel.Default)}");
 
         AnsiConsole.MarkupLine($"[green]   Default:[/][white] {value}[/]");
-        
-        Console.WriteLine();
 
+        Console.WriteLine();
     }
 
-    /// <summary>
-    /// Provides a mocked JSON configuration string for testing purposes skipping reading appsettings.json.
-    /// </summary>
     private static string MockedConfiguration()
     {
         var jsonString =
             /* lang=json*/
             """
-            {
-              "Logging": {
-                "LogLevel": {
-                  "Default": "Information",
-                  "Microsoft.AspNetCore": "Warning"
-                }
-              },
-              "AllowedHosts": "*",
-              "ConnectionStrings": {
-                "MainConnection": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=HasDataExample;Integrated Security=True;Encrypt=False",
-                "SecondaryConnection": "..."
-              },
-              "EntityConfiguration": {
-                "CreateNew": true
-              }
-            }
+                    {
+                      "Logging": {
+                        "LogLevel": {
+                          "Default": "Information",
+                          "Microsoft.AspNetCore": "Warning"
+                        }
+                      },
+                      "AllowedHosts": "*",
+                      "ConnectionStrings": {
+                        "MainConnection": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=HasDataExample;Integrated Security=True;Encrypt=False",
+                        "SecondaryConnection": "..."
+                      },
+                      "EntityConfiguration": {
+                        "CreateNew": true
+                      }
+                    }
 
-            """;
+                    """;
         return jsonString;
     }
-
 
     public static void GetSectionDemo()
     {
         const string fileName = "appsettings1.json";
         const string currentSection = nameof(EntityConfiguration);
 
-        var section = Configuration.JsonRoot(fileName).GetSection(currentSection);
+        var section = JsonRoot(fileName).GetSection(currentSection);
         var exists = section.Exists();
 
         var tester = Helpers.SectionExists(currentSection);
 
-        var sectionExists = Configuration.JsonRoot(fileName).GetChildren().Any(item => item.Key == currentSection);
+        var sectionExists = JsonRoot(fileName).GetChildren().Any(item => item.Key == currentSection);
 
-        var createNewValue = GetConfigModel<bool>(nameof(EntityConfiguration), nameof(EntityConfiguration.CreateNew));
+        var createNewValue = GetSetting<bool>(nameof(EntityConfiguration), nameof(EntityConfiguration.CreateNew));
     }
 
-    public static T GetConfigModel<T>(string section,string name) where T : new()
+    /// <summary>
+    /// Retrieves a strongly-typed value from the application configuration based on the specified section and name.
+    /// </summary>
+    /// <typeparam name="T">
+    /// The type of the value to retrieve. Must have a parameterless constructor.
+    /// </typeparam>
+    /// <param name="section">
+    /// The name of the configuration section containing the desired setting.
+    /// </param>
+    /// <param name="name">
+    /// The name of the setting within the specified section.
+    /// </param>
+    /// <returns>
+    /// The value of the specified setting as type <typeparamref name="T"/> if found; otherwise, the default value of <typeparamref name="T"/>.
+    /// </returns>
+    /// <remarks>
+    /// If the specified section or name is invalid, or if an error occurs during retrieval, the method returns the default value of <typeparamref name="T"/>.
+    /// </remarks>
+    public static T GetSetting<T>(string section, string name) where T : new()
     {
         if (string.IsNullOrWhiteSpace(name)) return default(T);
 
         try
         {
-            return Configuration.JsonRoot().GetSection(section).GetValue<T>(name);
+            return JsonRoot().GetSection(section).GetValue<T>(name);
         }
         catch
         {
             return default(T); // TODO:
         }
     }
-
 }
 public class Configurations
 {
@@ -232,4 +208,25 @@ public class Configurations
         return config.GetConnectionString("MainConnection");
     }
 
+    public static void SectionIsPopulated()
+    {
+        if (Helpers.SectionExists(nameof(ConnectionStrings)))
+        {
+            var connectionStringsSection = JsonRoot().GetSection(nameof(ConnectionStrings));
+            ConnectionStrings test = connectionStringsSection.Get<ConnectionStrings>();
+
+            var hasBothConnectionStrings =
+                !string.IsNullOrWhiteSpace(test.MainConnection) &&
+                !string.IsNullOrWhiteSpace(test.SecondaryConnection);
+
+            Console.WriteLine($"     MainConnection {!string.IsNullOrWhiteSpace(test.MainConnection)}");
+            Console.WriteLine($"SecondaryConnection {!string.IsNullOrWhiteSpace(test.SecondaryConnection)}");
+            Console.WriteLine(hasBothConnectionStrings);
+        }
+        else
+        {
+            Console.WriteLine("Missing");
+
+        }
+    }
 }

@@ -1,6 +1,5 @@
 ﻿using System.Text.Json;
 using TryGetPropertySample.Classes;
-using static TryGetPropertySample.Classes.SpectreConsoleHelpers;
 
 namespace TryGetPropertySample;
 
@@ -33,13 +32,20 @@ internal partial class Program
             Console.WriteLine($"{arg,-15}{value}");
         }
 
+        Console.WriteLine();
+        AppSettingsSamples.CheckMainSectionExistsStrongTyped();
+        Configurations.SectionIsPopulated();
+
+        ExitPrompt();
+    }
+
+    private static void ProcessAppSettingsAndStudentData()
+    {
         StudentsSample.ProcessStudentData();
         AppSettingsSamples.CheckMainSectionExistsStrongTyped();
         AppSettingsSamples.CheckMainSectionExistsWeakTyped();
         AppSettingsSamples.CheckMainSectionExistsWeakTypedMisSpelled();
         AppSettingsSamples.CheckIfLogLevelExistsAndGetDefaultLevel();
         AppSettingsSamples.GetLoggingSettings();
-
-        ExitPrompt();
     }
 }
