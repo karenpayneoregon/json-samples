@@ -1,6 +1,7 @@
 ﻿using ConsoleConfigurationLibrary.Classes;
 using Microsoft.Extensions.Configuration;
 using System.Text.Json;
+using Microsoft.Data.SqlClient;
 using TryGetPropertySample.Models;
 
 using static ConsoleConfigurationLibrary.Classes.Configuration;
@@ -213,20 +214,56 @@ public class Configurations
         if (Helpers.SectionExists(nameof(ConnectionStrings)))
         {
             var connectionStringsSection = JsonRoot().GetSection(nameof(ConnectionStrings));
-            ConnectionStrings test = connectionStringsSection.Get<ConnectionStrings>();
+            ConnectionStrings connections = connectionStringsSection.Get<ConnectionStrings>();
 
-            var hasBothConnectionStrings =
-                !string.IsNullOrWhiteSpace(test.MainConnection) &&
-                !string.IsNullOrWhiteSpace(test.SecondaryConnection);
+            var hasBothConnectionStrings = HasBothConnectionStrings(connections);
 
-            Console.WriteLine($"     MainConnection {!string.IsNullOrWhiteSpace(test.MainConnection)}");
-            Console.WriteLine($"SecondaryConnection {!string.IsNullOrWhiteSpace(test.SecondaryConnection)}");
-            Console.WriteLine(hasBothConnectionStrings);
+            Console.WriteLine($"Both connections are populated {hasBothConnectionStrings.ToYesNo()} ");
+
+            if (HasMainConnection(connections))
+            {
+                Console.WriteLine($"     MainConnection {!string.IsNullOrWhiteSpace(connections.MainConnection)}");
+                SqlConnectionStringBuilder scb = new(connections.MainConnection)
+                {
+                    CommandTimeout = 5
+                };
+                Console.WriteLine(scb.ToString());
+            }
+            else
+            {
+                AnsiConsole.MarkupLine("[red]      MainConnection does not exist.[/]");
+            }
+
+            if (HasSecondaryConnection(connections))
+            {
+                Console.WriteLine($"     SecondaryConnection {!string.IsNullOrWhiteSpace(connections.SecondaryConnection)}");
+            }
+            else
+            {
+                AnsiConsole.MarkupLine("[red]     SecondaryConnection does not exist.[/]");
+            }
+
         }
         else
         {
             Console.WriteLine("Missing");
 
         }
+
+        return;
+
+
+        bool HasBothConnectionStrings(ConnectionStrings test)
+        {
+            return !HasMainConnection(test) && !HasSecondaryConnection(test);
+        }
+
+        bool HasMainConnection(ConnectionStrings cs) => !string.IsNullOrWhiteSpace(cs.MainConnection);
+        bool HasSecondaryConnection(ConnectionStrings cs) => !string.IsNullOrWhiteSpace(cs.SecondaryConnection);
     }
+}
+
+public static class BoolExtensions
+{
+    public static string ToYesNo(this bool value) => value ? "Yes" : "No";
 }
