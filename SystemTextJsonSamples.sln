@@ -63,6 +63,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TryGetPropertySample", "Try
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidateOnStartConsoleApp", "ValidateOnStartConsoleApp\ValidateOnStartConsoleApp.csproj", "{F9CBE9A5-7B88-42E6-BA21-A52D4C7DFEAE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadConnectionStringAndCreateNewDatabase", "ReadConnectionStringAndCreateNewDatabase\ReadConnectionStringAndCreateNewDatabase.csproj", "{C88CCBF9-3D3A-4207-97C7-579867EA076F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -153,6 +155,10 @@ Global
 		{F9CBE9A5-7B88-42E6-BA21-A52D4C7DFEAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9CBE9A5-7B88-42E6-BA21-A52D4C7DFEAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9CBE9A5-7B88-42E6-BA21-A52D4C7DFEAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C88CCBF9-3D3A-4207-97C7-579867EA076F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C88CCBF9-3D3A-4207-97C7-579867EA076F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C88CCBF9-3D3A-4207-97C7-579867EA076F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C88CCBF9-3D3A-4207-97C7-579867EA076F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -169,6 +175,7 @@ Global
 		{E5E81463-559C-42A7-A3EE-9F4508BECFA7} = {F564100C-7E29-469F-95B0-5C7E46E6146A}
 		{50C64956-2C5B-4205-9319-7E607DCCE1CE} = {ED8812E4-A9C4-49E9-B564-6162A2DDA2F9}
 		{F9CBE9A5-7B88-42E6-BA21-A52D4C7DFEAE} = {ED8812E4-A9C4-49E9-B564-6162A2DDA2F9}
+		{C88CCBF9-3D3A-4207-97C7-579867EA076F} = {ED8812E4-A9C4-49E9-B564-6162A2DDA2F9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {342D7FE6-4218-4C64-8396-D903B378D9DB}
