@@ -41,7 +41,7 @@ internal partial class Program
         {
             throw new AppsettingsMissingConnectionString()
             {
-               Item = nameof(ConnectionStrings.MainConnection)
+               Name = nameof(ConnectionStrings.MainConnection)
             };
         }
     }
