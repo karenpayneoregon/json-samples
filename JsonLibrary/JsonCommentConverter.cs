@@ -1,25 +1,16 @@
 ﻿using System.Text.Json;
 
 namespace JsonLibrary;
-public class JsonCommentConverter : JsonCommentConverter<object>
-{
-    public JsonCommentConverter(string comment) : base(comment) { }
-}
+public class JsonCommentConverter(string comment) : JsonCommentConverter<object>(comment) { }
 
-public class JsonCommentConverter<TBase> : DefaultConverterFactory<TBase>
+public class JsonCommentConverter<TBase>(string comment) : DefaultConverterFactory<TBase>
 {
-    readonly string CommentWithDelimiters;
-
-    public JsonCommentConverter(string comment)
-    {
-        this.CommentWithDelimiters = " /*" + comment + "*/";
-    }
+    private readonly string _commentWithDelimiters = $" /*{comment}*/";
 
     protected override void Write<T>(Utf8JsonWriter writer, T value, JsonSerializerOptions modifiedOptions)
     {
-        // TODO: in .NET 9 investigate https://learn.microsoft.com/en-us/dotnet/api/microsoft.toolkit.highperformance.buffers.arraypoolbufferwriter-1 to avoid string allocations.
         var json = JsonSerializer.Serialize(value, modifiedOptions);
-        writer.WriteRawValue(json + CommentWithDelimiters, skipInputValidation: true);
+        writer.WriteRawValue(json + _commentWithDelimiters, skipInputValidation: true);
     }
 
     protected override JsonSerializerOptions ModifyOptions(JsonSerializerOptions options)

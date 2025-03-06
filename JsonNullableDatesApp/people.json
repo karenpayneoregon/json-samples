@@ -1,0 +1,24 @@
+{
+  "People": [
+    {
+      "name": "Karen Payne",
+      "birthday": "1956 09 24"
+    },
+    {
+      "name": "Jim Beam",
+      "birthday": "0000 00 00"
+    },
+    {
+      "name": "Mary Gallagher",
+      "birthday": "null"
+    },
+    {
+      "name": "Johnny Brown",
+      "birthday": null
+    },
+    {
+      "name": "Annie Brown",
+      "birthday": "1977 01 03"
+    }
+  ]
+}

@@ -65,6 +65,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidateOnStartConsoleApp",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadConnectionStringAndCreateNewDatabase", "ReadConnectionStringAndCreateNewDatabase\ReadConnectionStringAndCreateNewDatabase.csproj", "{C88CCBF9-3D3A-4207-97C7-579867EA076F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonNullableDatesApp", "JsonNullableDatesApp\JsonNullableDatesApp.csproj", "{B6E03C21-24E6-4249-DEBC-D45E01DAA7F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -159,6 +161,10 @@ Global
 		{C88CCBF9-3D3A-4207-97C7-579867EA076F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C88CCBF9-3D3A-4207-97C7-579867EA076F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C88CCBF9-3D3A-4207-97C7-579867EA076F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6E03C21-24E6-4249-DEBC-D45E01DAA7F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6E03C21-24E6-4249-DEBC-D45E01DAA7F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6E03C21-24E6-4249-DEBC-D45E01DAA7F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6E03C21-24E6-4249-DEBC-D45E01DAA7F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -14,6 +14,7 @@ internal partial class Program
         File.WriteAllText("Person.json", json);
 
         var person2 = JsonSerializer.Deserialize<Person>(json, Options);
+        Console.WriteLine(json);
         Console.ReadLine();
     }
 
