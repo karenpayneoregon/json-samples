@@ -3,6 +3,9 @@ using System.Text.Json.Serialization;
 using System.Text.Json;
 
 namespace JsonHelperLibrary;
+/// <summary>
+/// Provides a custom JSON converter for handling floating-point numbers.
+/// </summary>
 public class FloatConverter : JsonConverter<float>
 {
     public override float Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) 

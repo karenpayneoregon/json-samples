@@ -46,7 +46,7 @@ internal partial class Program
         //Json.ReadPeopleIgnoreBirthDate();
 
         //AnsiConsole.MarkupLine("[red]Intentional failure to read last name property for people[/]");
-        Json.ReadPeopleWithSpacesInPropertiesOoops();
+        //Json.ReadPeopleWithSpacesInPropertiesOoops();
 
         //AnsiConsole.MarkupLine("[yellow]Case insensitive properties[/]");
         //Json.ReadPeopleCaseInsensitiveProperties();

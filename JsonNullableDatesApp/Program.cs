@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using JsonHelperLibrary;
 using JsonNullableDatesApp.Classes;
 using JsonNullableDatesApp.Models;
 
@@ -12,7 +13,7 @@ internal partial class Program
         AnsiConsole.MarkupLine("[yellow]People[/]");
         var json = File.ReadAllText("people1.json");
 
-        var people = JsonSerializer.Deserialize<PeopleWrapper>(json, JsonSerializerOptions);
+        var people = JsonSerializer.Deserialize<PeopleWrapper>(json, JsonHelpers.CombinedOptions);
         foreach (var person in people.People)
         {
             Console.WriteLine($"{person.Name, -20}{person.Birthday.Conditional()}");
@@ -20,9 +21,5 @@ internal partial class Program
         Console.ReadLine();
     }
 
-    private static JsonSerializerOptions JsonSerializerOptions => new()
-        {
-            PropertyNameCaseInsensitive = true,
-            WriteIndented = true
-        };
+
 }

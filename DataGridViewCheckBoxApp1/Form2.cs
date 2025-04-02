@@ -12,6 +12,20 @@ public partial class Form2 : Form
 {
     private BindingSource _bindingSource = new();
     private SortableBindingList<ProductContainer> _bindingList;
+
+
+    private static readonly JsonSerializerOptions JsonSerializerOptions = new()
+    {
+        WriteIndented = true,
+        Converters = { new FixedDecimalJsonConverter() }
+    };
+
+
+    private static readonly JsonSerializerOptions _jsonDeserializerOptions = new JsonSerializerOptions
+    {
+        NumberHandling = JsonNumberHandling.AllowReadingFromString
+    };
+
     public Form2()
     {
         InitializeComponent();
@@ -47,27 +61,16 @@ public partial class Form2 : Form
     {
         List<ProductContainer> products = _bindingList.Where(pc => pc.Process).ToList();
 
-
         List<ProductItem> results = products
             .Select<Product, ProductItem>(container => container).ToList();
 
-        
         if (results.Any())
         {
             // process checked
-            File.WriteAllText("Products.json", JsonSerializer.Serialize(results, new JsonSerializerOptions
-            {
-                WriteIndented = true,
-                Converters = { new FixedDecimalJsonConverter() }
-            }));
+            File.WriteAllText("Products.json", JsonSerializer.Serialize(results, JsonSerializerOptions));
 
-
-            var jsonOptions = new JsonSerializerOptions()
-            {
-                NumberHandling = JsonNumberHandling.AllowReadingFromString
-            };
             var json = File.ReadAllText("Products.json");
-            List<Product>? productsFromFile = JsonSerializer.Deserialize<List<Product>>(json, jsonOptions);
+            List<Product>? productsFromFile = JsonSerializer.Deserialize<List<Product>>(json, _jsonDeserializerOptions);
             // set breakpoint below to see the results
         }
         else

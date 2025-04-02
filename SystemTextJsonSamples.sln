@@ -67,6 +67,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadConnectionStringAndCrea
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonNullableDatesApp", "JsonNullableDatesApp\JsonNullableDatesApp.csproj", "{B6E03C21-24E6-4249-DEBC-D45E01DAA7F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpperCaseCharConverter", "UpperCaseCharConverter\UpperCaseCharConverter.csproj", "{1C25A171-1565-4556-95EB-7F07720D9E6D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -165,6 +167,10 @@ Global
 		{B6E03C21-24E6-4249-DEBC-D45E01DAA7F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6E03C21-24E6-4249-DEBC-D45E01DAA7F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6E03C21-24E6-4249-DEBC-D45E01DAA7F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C25A171-1565-4556-95EB-7F07720D9E6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C25A171-1565-4556-95EB-7F07720D9E6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C25A171-1565-4556-95EB-7F07720D9E6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C25A171-1565-4556-95EB-7F07720D9E6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

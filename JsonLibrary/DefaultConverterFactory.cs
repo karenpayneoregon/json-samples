@@ -3,6 +3,17 @@ using System.Text.Json.Serialization;
 
 namespace JsonLibrary;
 
+/// <summary>
+/// Represents an abstract factory for creating JSON converters for types derived from <typeparamref name="TBase"/>.
+/// </summary>
+/// <typeparam name="TBase">
+/// The base type for which the converters will be created. All types to be converted must derive from this type.
+/// </typeparam>
+/// <remarks>
+/// This class provides a mechanism to customize JSON serialization and deserialization behavior for types
+/// derived from <typeparamref name="TBase"/>. It allows modification of <see cref="JsonSerializerOptions"/> 
+/// and provides methods for reading and writing JSON using the customized options.
+/// </remarks>
 public abstract class DefaultConverterFactory<TBase> : JsonConverterFactory
 {
     // Adapted from this answer https://stackoverflow.com/a/78512783/3744182
@@ -14,13 +25,19 @@ public abstract class DefaultConverterFactory<TBase> : JsonConverterFactory
 
         public DefaultConverter(JsonSerializerOptions modifiedOptions, DefaultConverterFactory<TBase> factory) { this.modifiedOptions = modifiedOptions; this.factory = factory; }
 
-        public override void Write(Utf8JsonWriter writer, TConcrete value, JsonSerializerOptions options) { factory.Write(writer, value, modifiedOptions); }
+        public override void Write(Utf8JsonWriter writer, TConcrete value, JsonSerializerOptions options)
+        {
+            factory.Write(writer, value, modifiedOptions);
+        }
         // In .NET 9 use
         // return public override TConcrete? Read
         public override TConcrete Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) { return factory.Read<TConcrete>(ref reader, typeToConvert, modifiedOptions); }
     }
 
-    protected virtual JsonSerializerOptions ModifyOptions(JsonSerializerOptions options) { return options.CopyAndRemoveConverter(this.GetType()); }
+    protected virtual JsonSerializerOptions ModifyOptions(JsonSerializerOptions options)
+    {
+        return options.CopyAndRemoveConverter(this.GetType());
+    }
 
     // In .NET 9 use
     // return public override T? Read(

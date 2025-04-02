@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿#nullable enable
+using System.Runtime.CompilerServices;
 
 namespace PracticeConsoleApp.Classes;
 
