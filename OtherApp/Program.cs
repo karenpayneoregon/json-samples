@@ -11,5 +11,6 @@ internal partial class Program
 
         Example1 class1 = new Example1();
         Example2 class2 = new Example2();
+
     }
 }
