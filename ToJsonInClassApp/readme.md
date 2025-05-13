@@ -1,6 +1,6 @@
 ﻿# About
 
-Came across this [question](https://stackoverflow.com/questions/79618017/why-does-an-inherited-class-not-get-json-serialized-correctly) and decided to try it out.
+Came across this [question](https://stackoverflow.com/questions/79618017/why-does-an-inherited-class-not-get-json-serialized-correctly) .
 
 The class `JsonSerializable` implements the `ISerializeJson` interface and provides a method `ToJson()` that serializes the object to JSON format using `System.Text.Json`.
 
