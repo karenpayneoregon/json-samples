@@ -1,47 +1,46 @@
 ﻿
-using Microsoft.Extensions.Options;
-using ValidateOnStartConsoleApp.Classes;
-using ValidateOnStartConsoleApp.Models;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using ValidateOnStartConsoleApp.Classes.Configuration;
 
+using System.Text.Json;
+using ValidateOnStartConsoleApp.Models;
+
+using static ConsoleConfigurationLibrary.Classes.ApplicationValidation;
 namespace ValidateOnStartConsoleApp;
 
 internal partial class Program
 {
-    static async Task Main(string[] args)
+    private static void Main(string[] args)
     {
-        await Setup();
-
 
         try
         {
-            ApplicationValidation.ValidateOnStart<ConnectionStrings>(nameof(ConnectionStrings), cs => cs.MainConnection);
+            ValidateOnStart<ConnectionStrings>(nameof(ConnectionStrings), cs => cs.MainConnection);
+            Console.WriteLine("Has main connection string");
         }
         catch (Exception ex)
         {
+            Console.WriteLine(ex.Message);
         }
 
-        //try
-        //{
-        //    ApplicationValidation.ValidateOnStart();
-        //}
-        //catch (Exception ex)
-        //{
-        //}
-
-        if (ConnectionHelpers.SectionExist())
+        try
         {
-            var test1 = ConnectionHelpers.HasMainConnection();
-            var test2 = ConnectionHelpers.HasSecondaryConnection();
+            ValidateOnStart<ConnectionStrings>(nameof(ConnectionStrings), cs => cs.MainConnection, cs => cs.SecondaryConnection);
+            Console.WriteLine("Has both connection strings");
         }
-        else
+        catch (Exception ex1)
         {
-
+            Console.WriteLine(ex1.Message);
         }
 
+        try
+        {
+            ValidateOnStart<HelpDesk>(nameof(HelpDesk), hd => hd.Phone, hd => hd.Email);
+            Console.WriteLine("Has help desk contact information");
+        }
+        catch (Exception ex2)
+        {
+            Console.WriteLine(ex2.Message);
+        }
+        
         ExitPrompt();
     }
 }

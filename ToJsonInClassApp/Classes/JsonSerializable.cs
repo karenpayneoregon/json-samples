@@ -7,7 +7,7 @@ namespace ToJsonInClassApp.Classes;
 /// </summary>
 /// <remarks>
 /// This class implements the <see cref="ISerializeJson"/> interface, 
-/// enabling derived classes to serialize themselves into JSON using the <see cref="System.Text.Json.JsonSerializer"/>.
+/// enabling derived classes to serialize themselves into JSON using the <see cref="JsonSerializer"/>.
 /// </remarks>
 public abstract class JsonSerializable : ISerializeJson
 {

@@ -27,6 +27,7 @@ internal partial class Program
             .StringColor(Color.White)
             .NullColor(Color.Green);
 
+
         AnsiConsole.Write(json);
         AnsiConsole.MarkupLine("\n\n[yellow]Done[/]");
         Console.ReadLine();

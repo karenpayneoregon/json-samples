@@ -6,6 +6,11 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>disable</Nullable>
 	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <DefineConstants>$(DefineConstants);SERIALIZING</DefineConstants>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<None Remove="readme.md" />
 	</ItemGroup>
@@ -13,10 +18,11 @@
 		<Content Include="assets\csharp.ico" />
 		<Content Include="readme.md" />
 	</ItemGroup>
-	<ItemGroup>
+	<!--<ItemGroup>
 		<PackageReference Include="ConfigurationLibrary" Version="1.0.6" />
-	</ItemGroup>
+	</ItemGroup>-->
 	<ItemGroup>
+		<PackageReference Include="Bogus" Version="35.6.3" />
 		<PackageReference Include="ConsoleHelperLibrary" Version="1.0.2" />
 	</ItemGroup>
 	<ItemGroup>

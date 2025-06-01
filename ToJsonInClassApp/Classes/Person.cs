@@ -3,13 +3,18 @@
 namespace ToJsonInClassApp.Classes;
 
 /// <summary>
-/// Represents a person with properties Id, first name, last name, and birthdate.
+/// Represents a person.
 /// </summary>
 /// <remarks>
-/// This class inherits from <see cref="JsonSerializable"/>, enabling instances of <see cref="Person"/> 
-/// to be serialized into JSON format using the <see cref="JsonSerializer"/>.
+/// Depending on the compilation symbol <c>SERIALIZING</c>, this class may inherit from <see cref="JsonSerializable"/>, 
+/// enabling JSON serialization capabilities. When inherited, instances of <see cref="Person"/> can be serialized 
+/// into JSON format using the <see cref="JsonSerializer"/>.
 /// </remarks>
+#if SERIALIZING
 public class Person : JsonSerializable
+#else
+public class Person
+#endif
 {
     public int Id { get; set; }
     public string FirstName { get; set; }
