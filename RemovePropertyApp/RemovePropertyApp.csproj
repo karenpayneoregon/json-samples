@@ -6,16 +6,16 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>disable</Nullable>
 	</PropertyGroup>
+
 	<ItemGroup>
 		<None Remove="readme.md" />
 	</ItemGroup>
+
 	<ItemGroup>
 		<Content Include="assets\csharp.ico" />
 		<Content Include="readme.md" />
 	</ItemGroup>
-	<ItemGroup>
-		<PackageReference Include="ConfigurationLibrary" Version="1.0.6" />
-	</ItemGroup>
+
 	<ItemGroup>
 		<PackageReference Include="ConsoleHelperLibrary" Version="1.0.2" />
 	</ItemGroup>
@@ -24,9 +24,14 @@
 		<PackageReference Include="Spectre.Console" Version="0.50.0" />
 		<PackageReference Include="Spectre.Console.Json" Version="0.50.0" />
 	</ItemGroup>
+
 	<ItemGroup>
 		<None Update="appsettings.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
+		<None Update="peopleIncoming.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 	</ItemGroup>
+
 </Project>

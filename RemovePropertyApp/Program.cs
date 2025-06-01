@@ -1,6 +1,8 @@
 ﻿using RemovePropertyApp.Classes;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using Spectre.Console.Json;
+using static RemovePropertyApp.Classes.SpectreConsoleHelpers;
 
 namespace RemovePropertyApp;
 
@@ -8,7 +10,7 @@ internal partial class Program
 {
     static void Main(string[] args)
     {
-        var json = PeopleJson();
+        var json = File.ReadAllText("peopleIncoming.json");
 
         var jsonArray = JsonNode.Parse(json)!.AsArray();
 
@@ -20,15 +22,11 @@ internal partial class Program
 
         var updatedJson = jsonArray.ToJsonString(Indented);
         
-        AnsiConsole.Write(
-            new Panel(Markup.Escape(updatedJson))
-                .Header(" People without age")
-                .Collapse()
-                .RoundedBorder()
-                .Padding(2,2,2,2)
-                .BorderColor(Color.Pink1));
+        DisplayUpdatedJsonPanel(updatedJson);
         
         Console.WriteLine();
+        
+        File.WriteAllText("People.json",updatedJson);
 
         var people = JsonSerializer.Deserialize<Person[]>(updatedJson);
         foreach (Person person in people)
@@ -37,36 +35,50 @@ internal partial class Program
                                    $"[hotpink2]{person.FirstName,-10}{person.LastName}[/]");
         }
 
-        AnsiConsole.MarkupLine("[yellow]Continue[/]");
-        Console.ReadLine();
+        ExitPrompt();
+
     }
 
-    private static string PeopleJson() =>
-            /* lang=json*/
-            """
-            [
-              {
-                "Id": 1,
-                "Name": "Mary",
-                "Last": "Jones",
-                "Age": 22
-              },
-              {
-                "Id": 2,
-                "Name": "John",
-                "Last": "Burger",
-                "Age": 44
-              },
-              {
-                "Id": 3,
-                "Name": "Anne",
-                "Last": "Adams",
-                "Age": 33
-              }
-            ]
-            """;
+    /// <summary>
+    /// Displays the updated JSON content in a styled panel using Spectre.Console.
+    /// </summary>
+    /// <param name="json">
+    /// The JSON string to be displayed in the panel. It is expected to be a well-formatted JSON string.
+    /// </param>
+    /// <remarks>
+    /// This method formats the JSON content with specific colors for various JSON elements, 
+    /// such as brackets, colons, strings, numbers, booleans, and null values. 
+    /// The content is displayed within a panel with a header, rounded border, and custom border color.
+    /// </remarks>
+    private static void DisplayUpdatedJsonPanel(string json)
+    {
+        var jsonText = new JsonText(json)
+            .BracketColor(Color.Green)
+            .ColonColor(Color.Blue)
+            .CommaColor(Color.Yellow)
+            .StringColor(Color.Green)
+            .NumberColor(Color.White)
+            .BooleanColor(Color.Red)
+            .MemberColor(Color.DodgerBlue1)
+            .NullColor(Color.Green);
 
+        AnsiConsole.Write(
+            new Panel(jsonText)
+                .Header("People")
+                .Collapse()
+                .RoundedBorder()
+                .BorderColor(Color.Yellow));
 
+    }
 
+    /// <summary>
+    /// Gets a <see cref="JsonSerializerOptions"/> instance configured to format JSON with indentation.
+    /// </summary>
+    /// <value>
+    /// A <see cref="JsonSerializerOptions"/> object with <see cref="JsonSerializerOptions.WriteIndented"/> set to <c>true</c>.
+    /// </value>
+    /// <remarks>
+    /// This property is used to ensure that JSON output is formatted with proper indentation for better readability.
+    /// </remarks>
     public static JsonSerializerOptions Indented => new() { WriteIndented = true };
 }
