@@ -75,6 +75,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AI Temp", "AI Temp", "{354D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tinkering", "Tinkering\Tinkering.csproj", "{0DFB68C1-9389-4A35-8F02-767D55634BB9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemovePropertyApp", "RemovePropertyApp\RemovePropertyApp.csproj", "{3769BBC5-1991-4821-B93E-C955EDB230F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -185,6 +187,10 @@ Global
 		{0DFB68C1-9389-4A35-8F02-767D55634BB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DFB68C1-9389-4A35-8F02-767D55634BB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DFB68C1-9389-4A35-8F02-767D55634BB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3769BBC5-1991-4821-B93E-C955EDB230F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3769BBC5-1991-4821-B93E-C955EDB230F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3769BBC5-1991-4821-B93E-C955EDB230F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3769BBC5-1991-4821-B93E-C955EDB230F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -203,6 +209,7 @@ Global
 		{F9CBE9A5-7B88-42E6-BA21-A52D4C7DFEAE} = {ED8812E4-A9C4-49E9-B564-6162A2DDA2F9}
 		{C88CCBF9-3D3A-4207-97C7-579867EA076F} = {ED8812E4-A9C4-49E9-B564-6162A2DDA2F9}
 		{0DFB68C1-9389-4A35-8F02-767D55634BB9} = {354DCFED-7CBA-48BF-1B15-1ECFE769B427}
+		{3769BBC5-1991-4821-B93E-C955EDB230F9} = {F564100C-7E29-469F-95B0-5C7E46E6146A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {342D7FE6-4218-4C64-8396-D903B378D9DB}
