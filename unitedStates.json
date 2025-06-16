@@ -1,4 +1,4 @@
-{
+[
     "AL": "Alabama",
     "AK": "Alaska",
     "AS": "American Samoa",
@@ -58,4 +58,4 @@
     "WV": "West Virginia",
     "WI": "Wisconsin",
     "WY": "Wyoming"
-}
+]
