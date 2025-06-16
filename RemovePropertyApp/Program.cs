@@ -10,23 +10,22 @@ internal partial class Program
 {
     static void Main(string[] args)
     {
-        var json = File.ReadAllText("peopleIncoming.json");
 
-        var jsonArray = JsonNode.Parse(json)!.AsArray();
+        var jsonArray = JsonNode.Parse(File.ReadAllText("peopleIncoming.json"))!.AsArray();
 
         foreach (var item in jsonArray)
         {
-            var obj = item!.AsObject();
+            JsonObject obj = item!.AsObject();
             obj.Remove("Age");
         }
 
         var updatedJson = jsonArray.ToJsonString(Indented);
-        
+
         DisplayUpdatedJsonPanel(updatedJson);
-        
+
         Console.WriteLine();
-        
-        File.WriteAllText("People.json",updatedJson);
+
+        File.WriteAllText("People.json", updatedJson);
 
         var people = JsonSerializer.Deserialize<Person[]>(updatedJson);
         foreach (Person person in people)
