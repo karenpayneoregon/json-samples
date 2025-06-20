@@ -79,6 +79,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemovePropertyApp", "Remove
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadJsonFromGitHubRepositoryApp", "ReadJsonFromGitHubRepositoryApp\ReadJsonFromGitHubRepositoryApp.csproj", "{40A1D481-96D0-49F8-9C4C-4C1B8ED84D36}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{62D8EDDC-33B6-4638-AB6A-CA34654A762F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -197,6 +199,10 @@ Global
 		{40A1D481-96D0-49F8-9C4C-4C1B8ED84D36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40A1D481-96D0-49F8-9C4C-4C1B8ED84D36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40A1D481-96D0-49F8-9C4C-4C1B8ED84D36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62D8EDDC-33B6-4638-AB6A-CA34654A762F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62D8EDDC-33B6-4638-AB6A-CA34654A762F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62D8EDDC-33B6-4638-AB6A-CA34654A762F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62D8EDDC-33B6-4638-AB6A-CA34654A762F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -217,6 +223,7 @@ Global
 		{0DFB68C1-9389-4A35-8F02-767D55634BB9} = {354DCFED-7CBA-48BF-1B15-1ECFE769B427}
 		{3769BBC5-1991-4821-B93E-C955EDB230F9} = {F564100C-7E29-469F-95B0-5C7E46E6146A}
 		{40A1D481-96D0-49F8-9C4C-4C1B8ED84D36} = {354DCFED-7CBA-48BF-1B15-1ECFE769B427}
+		{62D8EDDC-33B6-4638-AB6A-CA34654A762F} = {354DCFED-7CBA-48BF-1B15-1ECFE769B427}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {342D7FE6-4218-4C64-8396-D903B378D9DB}

@@ -1,13 +1,7 @@
 ﻿namespace OtherApp.Models;
 
 
-public class Rootobject
-{
-    public string status { get; set; }
-    public string count { get; set; }
-    public string code { get; set; }
-    public Information[] information { get; set; }
-}
+
 
 public class MachineDetails
 {
