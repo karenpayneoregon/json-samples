@@ -39,7 +39,7 @@ public class Operations
         return states ?? [];
     }
 
-    private static readonly JsonSerializerOptions CachedJsonSerializerOptions = new JsonSerializerOptions
+    private static readonly JsonSerializerOptions CachedJsonSerializerOptions = new()
     {
         PropertyNameCaseInsensitive = true
     };

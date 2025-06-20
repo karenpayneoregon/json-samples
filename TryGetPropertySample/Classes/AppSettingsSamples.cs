@@ -1,6 +1,6 @@
 ﻿using ConsoleConfigurationLibrary.Classes;
 using Microsoft.Extensions.Configuration;
-using System.Text.Json;
+
 using Microsoft.Data.SqlClient;
 using TryGetPropertySample.Models;
 
@@ -112,7 +112,14 @@ internal class AppSettingsSamples
 
         Console.WriteLine();
     }
-
+    /// <summary>
+    /// Retrieves the default logging level from the application's configuration.
+    /// </summary>
+    /// <remarks>
+    /// This method accesses the application's configuration to fetch the default logging level
+    /// defined under the "Logging:LogLevel:Default" section. It outputs the retrieved value
+    /// to the console using Spectre.Console for formatted display.
+    /// </remarks>
     public static void GetLoggingSettings()
     {
         PrintCyan();
