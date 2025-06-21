@@ -1,6 +1,6 @@
 Add INotifyPropertyChanged to the cuurent class
 place field at top of class
-string fields mark as nullable
+remove unessary usings
 use the following for property INotifyPropertyChanged set accessors
 ```csharp
 public event PropertyChangedEventHandler? PropertyChanged;
