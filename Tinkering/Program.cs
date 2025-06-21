@@ -1,24 +1,28 @@
-﻿namespace Tinkering;
+﻿using ConsoleConfigurationLibrary.Classes;
+using Tinkering.Models;
+
+namespace Tinkering;
 
 internal partial class Program
 {
     static void Main(string[] args)
     {
-        var filePath = "path/to/your/file.txt";
-        var dirPath = Path.GetDirectoryName(filePath);
-
-        if (dirPath is not null && Directory.Exists(dirPath) && File.Exists(filePath))
+        try
         {
-            foreach (var line in File.ReadLines(filePath))
-            {
-                AnsiConsole.MarkupLine($"[green]{line}[/]");
-            }
+            // Validate ConnectionStrings properties on start
+            ApplicationValidation.ValidateOnStart<ConnectionStrings>(
+                nameof(ConnectionStrings),
+                cs => cs.MainConnection,
+                cs => cs.SecondaryConnection
+            );
+            Console.WriteLine("ConnectionStrings validation succeeded.");
         }
-        else
+        catch (Exception ex)
         {
-            Console.WriteLine();
+            Console.WriteLine($"Validation failed: {ex.Message}");
         }
 
+        Console.WriteLine("Done");
         Console.ReadLine();
     }
 }

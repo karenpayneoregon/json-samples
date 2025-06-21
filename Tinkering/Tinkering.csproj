@@ -13,10 +13,9 @@
     <Content Include="assets\csharp.ico" />
     <Content Include="readme.md" />
   </ItemGroup>
+
   <ItemGroup>
-    <PackageReference Include="ConfigurationLibrary" Version="1.0.4" />
-  </ItemGroup>
-  <ItemGroup>
+    <PackageReference Include="ConsoleConfigurationLibrary" Version="1.0.0.11" />
     <PackageReference Include="ConsoleHelperLibrary" Version="1.0.0" />
   </ItemGroup>
 
